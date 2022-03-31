@@ -149,8 +149,8 @@ namespace WebApplication2
         {
             var kmsProviders = new Dictionary<string, IReadOnlyDictionary<string, object>>();
 
-            var awsAccessKey = "AKIAYMBVAMQFUFYJNSHN";// Environment.GetEnvironmentVariable("FLE_AWS_ACCESS_KEY");
-            var awsSecretAccessKey = "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";// Environment.GetEnvironmentVariable("FLE_AWS_SECRET_ACCESS_KEY");
+            var awsAccessKey = "AKIAYMBVAMQF6OP3MUUF";// Environment.GetEnvironmentVariable("FLE_AWS_ACCESS_KEY");
+            var awsSecretAccessKey = "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";// Environment.GetEnvironmentVariable("FLE_AWS_SECRET_ACCESS_KEY");
             var awsKmsOptions = new Dictionary<string, object>
             {
                 { "accessKeyId", awsAccessKey },
@@ -160,15 +160,15 @@ namespace WebApplication2
 
             var clientEncryption = GetClientEncryption(kmsProviders);
 
-            var awsKeyARN = "arn:aws:kms:us-east-1:575636792331:key/mrk-15397705f6c24d1ab87f05dde3a89228";// Environment.GetEnvironmentVariable("FLE_AWS_KEY_ARN"); // e.g. "arn:aws:kms:us-east-2:111122223333:alias/test-key"
+            var awsKeyARN = "arn:aws:kms:us-east-1:575636792331:key/mrk-5f7d8c280cc145d6801c158eb234b71c";// Environment.GetEnvironmentVariable("FLE_AWS_KEY_ARN"); // e.g. "arn:aws:kms:us-east-2:111122223333:alias/test-key"
             var awsKeyRegion = "us-east-1";// Environment.GetEnvironmentVariable("FLE_AWS_KEY_REGION");
             var awsEndpoint = "us-east-1.console.aws.amazon.com";// Environment.GetEnvironmentVariable("FLE_AWS_ENDPOINT"); // Optional, AWS KMS URL.
             var dataKeyOptions = new DataKeyOptions(
                 masterKey: new BsonDocument
                 {
                     { "region", awsKeyRegion },
-                    { "key", awsKeyARN },
-                    { "endpoint", () => awsEndpoint, awsEndpoint != null }
+                    { "key", awsKeyARN }
+                    //{ "endpoint", null }
                 });
 
             var dataKeyId = clientEncryption.CreateDataKey("aws", dataKeyOptions, CancellationToken.None);

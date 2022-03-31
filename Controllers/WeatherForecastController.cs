@@ -37,6 +37,7 @@ namespace WebApplication2.Controllers
             try
             {
                 var connectionString = "mongodb+srv://sbsadmin:sbsadmin@cluster0.kcbfl.mongodb.net";
+                //var connectionString = "mongodb://localhost:27017/";
                 var keyVaultNamespace = CollectionNamespace.FromFullName("encryption.__keyVault");
 
                 var kmsKeyHelper = new KmsKeyHelper(

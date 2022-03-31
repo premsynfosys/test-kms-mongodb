@@ -105,8 +105,8 @@ namespace WebApplication2
             var kmsProviders = new Dictionary<string, IReadOnlyDictionary<string, object>>();
 
 
-            var awsAccessKey = "AKIAYMBVAMQFUFYJNSHN";//Environment.GetEnvironmentVariable("FLE_AWS_ACCESS_KEY");
-            var awsSecretAccessKey = "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";// Environment.GetEnvironmentVariable("FLE_AWS_SECRET_ACCESS_KEY");
+            var awsAccessKey = "AKIAYMBVAMQF6OP3MUUF";//Environment.GetEnvironmentVariable("FLE_AWS_ACCESS_KEY");
+            var awsSecretAccessKey = "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";// Environment.GetEnvironmentVariable("FLE_AWS_SECRET_ACCESS_KEY");
             var awsKmsOptions = new Dictionary<string, object>
                         {
                             { "accessKeyId", awsAccessKey },
