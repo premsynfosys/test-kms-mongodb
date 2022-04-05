@@ -75,30 +75,30 @@ namespace WebApplication2
             Console.WriteLine($"Encrypted client query by the SSN (deterministically-encrypted) field:\n {result}\n");
         }
 
-        //public void QueryWithNonEncryptedClient()
-        //{
-        //    var nonAutoEncryptingClient = new MongoClient(_connectionString);
-        //    var collection = nonAutoEncryptingClient
-        //      .GetDatabase(_medicalRecordsNamespace.DatabaseNamespace.DatabaseName)
-        //      .GetCollection<BsonDocument>(_medicalRecordsNamespace.CollectionName);
-        //    var ssnQuery = Builders<BsonDocument>.Filter.Eq("ssn", __sampleSsnValue);
+        public void QueryWithNonEncryptedClient()
+        {
+            var nonAutoEncryptingClient = new MongoClient(_connectionString);
+            var collection = nonAutoEncryptingClient
+              .GetDatabase(_medicalRecordsNamespace.DatabaseNamespace.DatabaseName)
+              .GetCollection<BsonDocument>(_medicalRecordsNamespace.CollectionName);
+            var ssnQuery = Builders<BsonDocument>.Filter.Eq("ssn", __sampleSsnValue);
 
-        //    var result = collection.Find(ssnQuery).FirstOrDefault();
-        //    if (result != null)
-        //    {
-        //        throw new Exception("Expected no document to be found but one was found.");
-        //    }
+            var result = collection.Find(ssnQuery).FirstOrDefault();
+            if (result != null)
+            {
+                throw new Exception("Expected no document to be found but one was found.");
+            }
 
-        //    // Query by name field with a normal non-auto-encrypting client
-        //    var nameQuery = Builders<BsonDocument>.Filter.Eq("name", __sampleNameValue);
-        //    result = collection.Find(nameQuery).FirstOrDefault();
-        //    if (result == null)
-        //    {
-        //        throw new Exception("Expected the document to be found but none was found.");
-        //    }
+            // Query by name field with a normal non-auto-encrypting client
+            var nameQuery = Builders<BsonDocument>.Filter.Eq("name", __sampleNameValue);
+            result = collection.Find(nameQuery).FirstOrDefault();
+            if (result == null)
+            {
+                throw new Exception("Expected the document to be found but none was found.");
+            }
 
-        //    Console.WriteLine($"Query by name (non-encrypted field) using non-auto-encrypting client returned:\n {result}\n");
-        //}
+            Console.WriteLine($"Query by name (non-encrypted field) using non-auto-encrypting client returned:\n {result}\n");
+        }
 
         private IMongoClient CreateAutoEncryptingClient(KmsKeyLocation kmsKeyLocation, CollectionNamespace keyVaultNamespace, BsonDocument schema)
         {

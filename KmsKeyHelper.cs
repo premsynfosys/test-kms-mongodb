@@ -162,7 +162,7 @@ namespace WebApplication2
 
             var awsKeyARN = "arn:aws:kms:us-east-1:575636792331:key/mrk-5f7d8c280cc145d6801c158eb234b71c";// Environment.GetEnvironmentVariable("FLE_AWS_KEY_ARN"); // e.g. "arn:aws:kms:us-east-2:111122223333:alias/test-key"
             var awsKeyRegion = "us-east-1";// Environment.GetEnvironmentVariable("FLE_AWS_KEY_REGION");
-            var awsEndpoint = "us-east-1.console.aws.amazon.com";// Environment.GetEnvironmentVariable("FLE_AWS_ENDPOINT"); // Optional, AWS KMS URL.
+          
             var dataKeyOptions = new DataKeyOptions(
                 masterKey: new BsonDocument
                 {
